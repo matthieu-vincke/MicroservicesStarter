@@ -1,0 +1,38 @@
+machine:
+  hosts:
+    redisDocker: 127.0.0.1
+  environment:
+    mongoUri: "mongodb://localhost/app-dev"
+    redisDocker: "localhost"
+    PORT: 8000
+    CIRCLE_ARTIFACTS: "coverage"
+
+  pre:
+    - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.1-circleci'
+    - sudo chmod 0755 /usr/bin/docker
+  services:
+    - docker
+  node:
+    version: 6.2.2
+  services:
+    - docker
+
+dependencies:
+  override:
+    - sudo pip install docker-compose
+    - npm -g install swagger
+    - npm -g install gulp
+    - cd MicroServiceOne && npm install
+
+general:
+  artifacts:
+    - "coverage" # relative to the user's home directory
+    - $CIRCLE_TEST_REPORTS
+
+test:
+  pre:
+    - docker-compose -f docker-compose-test.yaml up -d
+  override:
+    - cd MicroServiceOne && gulp test
+  post:
+    - docker stop $(docker ps -a -q) && mkdir -p coverage/MicroServiceOne && cd MicroServiceOne && cp -R coverage ../coverage/MicroServiceOne

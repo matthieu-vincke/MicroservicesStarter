@@ -1,0 +1,11 @@
+# To run the tests with the continous integration
+#  docker-compose -f docker-compose-test.yaml up -d
+#  cd MicroServiceOne/
+#  sh ./setEnvLinux.sh
+#  swagger project test
+
+mongodbDocker:
+  image: mongo
+
+redisDocker:
+  image: redis

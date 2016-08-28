@@ -1,0 +1,9 @@
+THE DEVELOPER: {"id":"3d49b031-2186-4ffe-bf9b-fef3102eb1a2","uuid":"3d49b031-2186-4ffe-bf9b-fef3102eb1a2","email":"someperson@example2.com","userName":"someperson@example.com","firstName":"Some","lastName":"Person"}
+
+THE APP: {"id":"86ead600-f8c1-4cd0-963c-f58930b489db","uuid":"86ead600-f8c1-4cd0-963c-f58930b489db","name":"Test App","developerId":"3d49b031-2186-4ffe-bf9b-fef3102eb1a2","credentials":[{"key":"AKo9boiIgaZzSqBzko3UrZiFM5CJ2eHXC1JM8eIW4Qo=","secret":"ccfZAh5Qn0qXX843kgU2fs37zzA0AmjlN7ejk2v3HRU=","status":"valid"}],"scopes":["scope1","scope2"]}
+
+Client ID: AKo9boiIgaZzSqBzko3UrZiFM5CJ2eHXC1JM8eIW4Qo=
+
+Client Secret: ccfZAh5Qn0qXX843kgU2fs37zzA0AmjlN7ejk2v3HRU=
+
+Obtain access token:  curl -i -X POST http://127.0.0.1:10010/accesstoken -d 'grant_type=client_credentials&client_id=AKo9boiIgaZzSqBzko3UrZiFM5CJ2eHXC1JM8eIW4Qo%3D&client_secret=ccfZAh5Qn0qXX843kgU2fs37zzA0AmjlN7ejk2v3HRU%3D'

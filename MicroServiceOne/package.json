@@ -1,0 +1,51 @@
+{
+  "name": "UserManager",
+  "version": "0.0.1",
+  "private": true,
+  "description": "New Swagger API Project",
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "a127-magic": "^0.12.1",
+    "clone": "^1.0.2",
+    "debug": "^2.2.0",
+    "express": "^4.12.3",
+    "gulp": "^3.9.1",
+    "gulp-istanbul": "^1.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-standard": "^7.0.1",
+    "js-yaml": "^3.6.1",
+    "moment": "^2.13.0",
+    "mongoose": "^4.5.0",
+    "promise": "^7.1.1",
+    "q": "^1.4.1",
+    "redis": "^2.6.2",
+    "request": "^2.72.0",
+    "swagger-express-mw": "^0.1.0",
+    "volos-management-redis": "^0.9.10",
+    "volos-oauth-redis": "^0.13.0"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "dotenv": "^1.2.0",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-istanbul": "^1.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-standard": "^7.0.1",
+    "mocha": "^2.5.3",
+    "mocha-junit-reporter": "^1.11.1",
+    "mockery": "^1.7.0",
+    "nock": "^8.0.0",
+    "q": "^1.4.1",
+    "request": "^2.58.0",
+    "should": "^7.1.0",
+    "supertest": "^1.0.0",
+    "z-schema": "^3.12.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "swagger project test"
+  }
+}

@@ -1,0 +1,20 @@
+mongodbDocker:
+  image: mongo
+
+redisDocker:
+  image: redis
+
+microserviceone:
+  build: ./MicroServiceOne
+  environment:
+    - PORT=10010
+    - mongoUri=mongodb://mongodbDocker/app-dev
+    - redisDocker=redisDocker
+    - mongodbDocker=mongodbDocker
+  ports:
+    - "8000:10010"
+  volumes:
+    - //home/docker/c/Work/GitHub/MicroservicesStarter/MicroServiceOne:/usr/src/app
+  links:
+    - mongodbDocker
+    - redisDocker
