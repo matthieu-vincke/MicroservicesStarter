@@ -52,25 +52,27 @@ Basically, what you have to do is the following:
   - cd /var/lib/boot2docker
   - sudo vi ./bootsync.sh
   - Set it as:  
-```python
-#!/bin/sh
 
-mkdir /home/docker/c
-mount.vboxsf c /home/docker/c
-```
-    - sudo chmod +x ./bootsync.sh
-    - exit
-    - Then, restart the docker machine with 'docker-machine restart'
-    - You can ssh again the docker machine to see the folder is correctly mounted
-    - Modify the docker-compose file with the complete path to your sources.
+    ```python
+    #!/bin/sh
+
+    mkdir /home/docker/c
+    mount.vboxsf c /home/docker/c   
+    ```   
+
+  - sudo chmod +x ./bootsync.sh
+  - exit
+  - Then, restart the docker machine with 'docker-machine restart'
+  - You can ssh again the docker machine to see the folder is correctly mounted
+  - Modify the docker-compose file with the complete path to your sources.
   For me:
 
-```
-volumes:
-- //home/docker/c/Work/GitHub/MicroservicesStarter/MicroServiceOne:/usr/src/app
-```
+    ```
+    volumes:
+    - //home/docker/c/Work/GitHub/MicroservicesStarter/MicroServiceOne:/usr/src/app
+    ```
 
-If you don't to this, you will have to rebuild the MicroServiceOne container everytime you do a change in the code! This is not a good way to develop... Using a volume allow you to only have to restart the container to take your code changes into account or even to only restart the node server.  
+  If you don't to this, you will have to rebuild the MicroServiceOne container everytime you do a change in the code! This is not a good way to develop... Using a volume allow you to only have to restart the container to take your code changes into account or even to only restart the node server.  
 
 Once you are done with all this, type:
 - docker-compose -f docker-compose-dev.yaml build
