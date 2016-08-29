@@ -1,9 +1,9 @@
 swagger: "2.0"
 info:
-  version: "0.0.2"
-  title: Weather service - How to dress
+  version: "0.0.1"
+  title: Hello World App
 # during dev, should point to your local machine
-host: localhost:8000
+host: localhost:10010
 # basePath prefixes all resource paths 
 basePath: /
 # 
@@ -17,87 +17,44 @@ consumes:
 # format of the responses to the client (Accepts)
 produces:
   - application/json
-  
-x-volos-resources:
-  oauth2:
-    provider: "volos-oauth-redis"
-    options:
-      ## Needed for Redis provider
-      encryptionKey: 'abc123'
-      host: redisDocker
-      port: 6379
-      ## Apply to both providers
-      tokenLifetime: 300000
-      passwordCheck:
-        helper: userOAuthHelper
-        function: passwordCheck
-      validGrantTypes:
-        - password
-      tokenPaths:  # These will be added to your paths section for you
-        token: /accesstoken
-        refresh: /refresh
-        invalidate: /invalidate
-        
 paths:
-  /howToDress:
-    x-swagger-router-controller: how_to_dress   
-    x-volos-authorizations:
-        oauth2: {}
+  /hello:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: hello_world
     get:
-      description: Returns how to dress given a latitude/longitude or a city name (country code is optional but it helps to distinct city names that can exist in multiple countries...)
-      operationId: howtodress
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: hello
       parameters:
-        - name: lat
+        - name: name
           in: query
-          description: The latitude of the position
-          required: false
-          type: string
-        - name: long
-          in: query
-          description: The longitude of the position
-          required: false
-          type: string
-        - name: city
-          in: query
-          description: The city name
-          required: false
-          type: string
-        - name: country
-          in: query
-          description: The country code
+          description: The name of the person to whom to say hello
           required: false
           type: string
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/HowToDressResponse"
+            # a pointer to a definition
+            $ref: "#/definitions/HelloWorldResponse"
+        # responses may fall through to errors
         default:
           description: Error
           schema:
-            $ref: "#/definitions/HowToDressErrorResponse"
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
 definitions:
-  HowToDressResponse:
+  HelloWorldResponse:
     required:
-      - status
-      - dresscode
-    properties:
-      status:
-        type: integer
-      dresscode:
-        type: integer
-        minimum: 0
-        maximum: 10
-      details:
-        type: string
-  HowToDressErrorResponse:
-    required:
-      - status
       - message
     properties:
-      status:
-        type: integer
-        minimum: -10
-        maximum: 10
+      message:
+        type: string
+  ErrorResponse:
+    required:
+      - message
+    properties:
       message:
         type: string

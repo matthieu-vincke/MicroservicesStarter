@@ -2,7 +2,6 @@
 
 var SwaggerExpress = require('swagger-express-mw');
 var app = require('express')();
-var mongodb = require('./core/mongodb');
 var redisClient = require('./core/redisClient');
 var a127 = require('a127-magic');
 

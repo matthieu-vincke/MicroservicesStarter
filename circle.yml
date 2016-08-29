@@ -2,7 +2,6 @@ machine:
   hosts:
     redisDocker: 127.0.0.1
   environment:
-    mongoUri: "mongodb://localhost/app-dev"
     redisDocker: "localhost"
     PORT: 8000
     CIRCLE_ARTIFACTS: "coverage"

@@ -1,6 +1,3 @@
-mongodbDocker:
-  image: mongo
-
 redisDocker:
   image: redis
 
@@ -16,5 +13,4 @@ microserviceone:
   volumes:
     - //home/docker/c/Work/GitHub/MicroservicesStarter/MicroServiceOne:/usr/src/app
   links:
-    - mongodbDocker
     - redisDocker
