@@ -1,3 +1,5 @@
+Github repo: https://github.com/matthieu-vincke/MicroservicesStarter   
+
 # Starter kit for Microservices using Dockers and Swagger
 
 This is a starter kit I use for projects based on a Microservices architecture.
@@ -94,3 +96,6 @@ The auto deployment is ready for circleci. It has been tested using Digital Ocea
 For further details, you can check the file "circle.yml".
 This is still a work in progress as the deployment is not fully automatic as it needs a manual restart.
 More to come soon...
+
+## Contacts
+You can contact me on Twitter ![Twitter](https://dl.dropboxusercontent.com/u/52579856/OpenYeller/Img/TwitterBird-40x40.png): [Matthieu Vincke](https://twitter.com/MatthieuVincke)
