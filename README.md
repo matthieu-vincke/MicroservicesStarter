@@ -40,7 +40,7 @@ More than staging, it is between dev and staging actually... It is a way to run 
 ### Windows
 - Run docker tools
 - Go to the folder when the sources are
-- Follow the instructions below:
+- Follow the instructions below:   
 On Windows, with docker tools, you might not have your container running properly...  
 This is a well known problem due to the fact the containers are actually running on the virtual machine (The default docker machine) and not directly on your machine. As the path: ./MicroServices/UserManager doesn't actually exist on the default machine, you understand this can't work: we have to mount our local folder to a folder of the docker default machine to make this work.  
 I found some help for this on https://gist.github.com/matthiasg/76dd03926d095db08745
@@ -58,11 +58,11 @@ Basically, what you have to do is the following:
 mkdir /home/docker/c
 mount.vboxsf c /home/docker/c
 ```
-  - sudo chmod +x ./bootsync.sh
-  - exit
-  - Then, restart the docker machine with 'docker-machine restart'
-  - You can ssh again the docker machine to see the folder is correctly mounted
-  - Modify the docker-compose file with the complete path to your sources.
+    - sudo chmod +x ./bootsync.sh
+    - exit
+    - Then, restart the docker machine with 'docker-machine restart'
+    - You can ssh again the docker machine to see the folder is correctly mounted
+    - Modify the docker-compose file with the complete path to your sources.
   For me:
 
 ```
