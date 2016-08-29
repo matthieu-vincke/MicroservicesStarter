@@ -45,24 +45,25 @@ On Windows, with docker tools, you might not have your container running properl
 This is a well known problem due to the fact the containers are actually running on the virtual machine (The default docker machine) and not directly on your machine. As the path: ./MicroServices/UserManager doesn't actually exist on the default machine, you understand this can't work: we have to mount our local folder to a folder of the docker default machine to make this work.  
 I found some help for this on https://gist.github.com/matthiasg/76dd03926d095db08745
 Basically, what you have to do is the following:
-- Open virtual box (installed with the docker tools), right click on the default machine that is actually the docker-machine default
-- Add your c drive (or the drive in which your sources live) as a shared folder. For me it is C:\ under the name 'c'
-- Go to the docker-tools prompt and type
-- docker-machine ssh default
-- cd /var/lib/boot2docker
-- sudo vi ./bootsync.sh
-- Set it as:
+  - Open virtual box (installed with the docker tools), right click on the default machine that is actually the docker-machine default
+  - Add your c drive (or the drive in which your sources live) as a shared folder. For me it is C:\ under the name 'c'
+  - Go to the docker-tools prompt and type
+  - docker-machine ssh default
+  - cd /var/lib/boot2docker
+  - sudo vi ./bootsync.sh
+  - Set it as:  
 ```python
 #!/bin/sh
 
 mkdir /home/docker/c
 mount.vboxsf c /home/docker/c
 ```
-- sudo chmod +x ./bootsync.sh
-- exit
-- Then, restart the docker machine with 'docker-machine restart'
-- You can ssh again the docker machine to see the folder is correctly mounted
-- Modify the docker-compose file with the complete path to your sources. For me:
+  - sudo chmod +x ./bootsync.sh
+  - exit
+  - Then, restart the docker machine with 'docker-machine restart'
+  - You can ssh again the docker machine to see the folder is correctly mounted
+  - Modify the docker-compose file with the complete path to your sources.
+  For me:
 
 ```
 volumes:
